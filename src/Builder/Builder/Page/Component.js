@@ -2,6 +2,11 @@
 import * as React from "react";
 import { useState } from "react";
 
+import { OPTIONS as paragraphOptions } from "../../components/Paragraph";
+import { OPTIONS as titleOptions } from "../../components/Title";
+import { OPTIONS as imageOptions } from "../../components/Image";
+import { OPTIONS as productOptions } from "../../components/Product";
+
 import type { Component as ComponentType } from "../../types";
 
 import { Panel, Button } from "react-bulma-components";
@@ -11,6 +16,8 @@ type Props = {|
   onChange: (ComponentType) => void,
   onRemove: (ComponentType) => void,
 |};
+
+const componentsOptionsSchemas = Object.assign({}, paragraphOptions, titleOptions, imageOptions, productOptions)
 
 export default function BuilderPageComponent({
   onChange,
@@ -41,17 +48,25 @@ export default function BuilderPageComponent({
     onClose();
   }
 
-  const formOptions = Object.entries(options).map((option) => 
-    <>
-      <div className="has-text-weight-bold">{option[0]}</div>
-      <input
-        className="input is-primary"
-        type="text" value={newOptions[option[0]]}
-        onChange={(event) => handleChangeOptions(event, option)}
-        placeholder="Option"
-      />
-    </>
-  )  
+  const formOptions = Object.entries(options).map((option) => {
+    let type;
+    switch(componentsOptionsSchemas[option[0]].type) {
+      case 'string': type='text'; break
+      case 'number': type='number'; break
+      default: type='text'
+    }
+    return (
+      <>
+        <div className="has-text-weight-bold pt-2 pb-1">{componentsOptionsSchemas[option[0]].label}</div>
+        <input
+          className="input is-primary"
+          type={type} value={newOptions[option[0]]}
+          onChange={(event) => handleChangeOptions(event, option)}
+          placeholder="Option"
+        />
+      </>
+    )
+  })
 
   return (
     <>
@@ -87,7 +102,7 @@ export default function BuilderPageComponent({
                 overflow: "hidden",
               }}
             >
-              <b>{optionName}</b>: {options[optionName] || "Empty"}
+              <b>{componentsOptionsSchemas[optionName].label}</b>: {options[optionName] || "Empty"}
             </p>
           </Panel.Block>
         ))}

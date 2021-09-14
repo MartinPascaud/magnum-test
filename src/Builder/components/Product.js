@@ -9,7 +9,7 @@ export const OPTIONS: ComponentOptionSchema = {
     label: "Titre",
     type: "string",
   },
-  description: {
+  paragraph: {
     label: "Description",
     type: "string",
   },
