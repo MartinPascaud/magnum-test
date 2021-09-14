@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import type { Component as ComponentType } from "../../types";
 
-import { Panel, Modal, Button, Form } from "react-bulma-components";
+import { Panel, Button } from "react-bulma-components";
 
 type Props = {|
   component: ComponentType,
@@ -21,28 +21,37 @@ export default function BuilderPageComponent({
   // Ajouter la fonctionnalité d'édition du contenu d'un composant :
   // - Permettre d'ouvrir la modal lors du click sur le bouton edit
   // - Afficher un formulaire permettant d'éditer les options du composant
-  // - Enregistrer les changements lorsque l'utilisateur clique sur "Enregistrer"
-  // Note: les changements ne doivent pas prendre effet tant que l'utilisateur n'a pas enregistré
-
-  const { componentId } = component;
-  const [options, setOptions] = useState(component.options)
+  // - Enregistrer les changements lorsque l'utilisateur cliques sur "Enregistrer"
+  // Note: les changements ne doivent pas prendre effet tant que l'utilisateur n'a pas enregistrer
+  const { componentId, options } = component;
+  const [newOptions, setNewOptions] = useState(options)
   const [show, setShow] = useState(false);
   const onClose = () => setShow(!show);
-  const option = Object.entries(options)[0];
-  const key = option[0]
-  const [value, setValue] = useState(option[1])
-  const handleChange = (event) => {
-    setValue(event.target.value)
+  const handleChangeOptions = (event, option) => {
+    setNewOptions((prevOptions) => ({
+      ...prevOptions,
+      [option[0]]: event.target.value
+    }))
   }
   const save = () => {
-    setOptions((prevOptions) => {
-      return {
-        ...prevOptions,
-        content: value
-      }
+    onChange({
+      ...component,
+      options: newOptions
     })
     onClose();
   }
+
+  const formOptions = Object.entries(options).map((option) => 
+    <>
+      <div className="has-text-weight-bold">{option[0]}</div>
+      <input
+        className="input is-primary"
+        type="text" value={newOptions[option[0]]}
+        onChange={(event) => handleChangeOptions(event, option)}
+        placeholder="Option"
+      />
+    </>
+  )  
 
   return (
     <>
@@ -52,8 +61,8 @@ export default function BuilderPageComponent({
             <div>{componentId}</div>
             <div>
               <Button onClick={() => setShow(!show)} size="small" style={{ marginRight: 5 }}>
-                <span class="icon">
-                  <i class="fas fa-edit"></i>
+                <span className="icon">
+                  <i className="fas fa-edit"></i>
                 </span>
               </Button>
               <Button
@@ -61,8 +70,8 @@ export default function BuilderPageComponent({
                 size="small"
                 color="danger"
               >
-                <span class="icon">
-                  <i class="fas fa-times"></i>
+                <span className="icon">
+                  <i className="fas fa-times"></i>
                 </span>
               </Button>
             </div>
@@ -94,8 +103,7 @@ export default function BuilderPageComponent({
                 <button className="delete" onClick={onClose} aria-label="close"></button>
               </header>
               <section className="modal-card-body">
-                <div className="has-text-weight-bold">{key}</div>
-                <input class="input is-primary" type="text" value={value} onChange={handleChange} placeholder="Text input"/>
+               {formOptions}
               </section>
               <footer className="modal-card-foot is-justify-content-flex-end">
                 <button className="button" onClick={onClose}>Annuler</button>

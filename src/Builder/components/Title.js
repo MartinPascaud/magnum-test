@@ -7,7 +7,7 @@ import { Heading } from "react-bulma-components";
 
 export const OPTIONS = {
   content: {
-    label: "content",
+    label: "Contenu",
     type: "string",
   },
 };

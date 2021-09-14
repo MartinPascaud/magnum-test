@@ -88,8 +88,13 @@ const DEFAULT_LAYOUT: Layout = [
         components: [
           {
             id: "3QWYMPJuLHzP2wMux8Mo-",
-            componentId: "Title",
-            options: { content: "Why do we use it?" },
+            componentId: "Product",
+            options: { 
+              title: "Un peigne",
+              paragraph: "Un peigne sert à se peigner les cheveux, cela vous permettra d'être présentable.",
+              price: 50,
+              image: "https://www.diouda.fr/upload/image/peigne-de-demelage-avec-picots-incurves-p-image-264062-grande.jpg"
+            },
           },
         ],
       },

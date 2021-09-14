@@ -5,7 +5,7 @@ import type { ComponentOptionSchema, RenderedComponentProps } from "../types";
 
 export const OPTIONS: ComponentOptionSchema = {
   content: {
-    label: "content",
+    label: "Contenu",
     type: "string",
   },
 };

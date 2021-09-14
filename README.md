@@ -3,16 +3,19 @@
 ## Le stage
 
 Le sujet de l'entreprise est assez complexe et demande des efforts intellectuels au jour le jour pour comprendre le modèle de données et l'architecture du code, afin de pouvoir faire des développements pertinents et développer un produit exceptionnel, c'est l'objectif qu'on s'est fixé.
-Je cherche donc des candidats volontaires, compétents, capable d'apprendre rapidement, et ayant envie de faire de leur stage un véritable tremplin pour la suite de leur carrière. En échange de votre motivation, ma mission durant votre stage est de vous accompagner au mieux pour booster vos connaissances et votre compréhension afin de vous ouvrir de belles portes pour la suite, que ce soit en interne chez nous ou dans une autre entreprise.
+
+Je cherche donc des candidats volontaires, compétents, capables d'apprendre rapidement, et ayant envie de faire de leur stage un véritable tremplin pour la suite de leur carrière. En échange de votre motivation, ma mission durant votre stage est de vous accompagner au mieux pour booster vos connaissances et votre compréhension afin de vous ouvrir de belles portes pour la suite, que ce soit en interne chez nous ou dans une autre entreprise.
+
 Ayant beaucoup de travail et peu de temps pour parcourir toutes les candidatures, je suis obligé de trier les candidats de manière en partie "automatique", à travers ce test. En l'échange des efforts que vous devrez certainement fournir pour réussir ce test, sachez que votre réussite sera très appréciée et sera pour moi un très bon indicateur concernant votre candidature.
-Dans un deuxième temps, nous débrieferons votre test ensemble lors d'un entretien et je vous poserai également des questions techniques d'ordre général concernant Javascript, l'orienté objet, React. Nous ferons également connaissances durant cet entretien et parlerons de l'entreprise, de votre parcours et du mien.
+
+Dans un deuxième temps, nous débrieferons votre test ensemble lors d'un entretien et je vous poserai également des questions techniques d'ordre général concernant Javascript, l'orienté objet, React. Nous ferons également connaissance durant cet entretien et parlerons de l'entreprise, de votre parcours et du mien.
 
 Vous pouvez m'envoyer des questions concernant le test en cas de blocage.
 
-Réussir ce test vous demandera un travail non négligeable, mais aura des contreparties qui vous seront profitables :
+Réussir ce test vous demandera un travail non-négligeable, mais aura des contreparties qui vous seront profitables :
 
 - Cela prouvera votre forte motivation et votre envie d'apprendre durant ce stage, qui sera exigeant mais vous amènera à un très bon niveau !
-- Vous aurez d'hors et déjà mis un pied dans le fonctionnement de notre solution, puisque ce test en est inspiré.
+- Vous aurez d'ores et déjà mis un pied dans le fonctionnement de notre solution, puisque ce test en est inspiré.
 - Vous aurez relevé un défi difficile, qui vous aura certainement appris des choses.
 - Vous aurez appris à travers les différentes lectures de documentation comment fonctionnent certains éléments clés de l'environnement React actuel.
 
@@ -23,7 +26,7 @@ Ce test vous mettra en situation puisque l'entreprise Magasin Numérique dévelo
 
 A Magasin Numérique, nous administrons les sites de plusieurs clients comment Secrets d'histoire (https://secretsdhistoire.tv), Front Populaire (https://frontpopulaire.fr) et AfterFoot (https://afterfoot.media).
 
-Ces sites sont créés à partir d'un backoffice qui permet à la fois
+Ces sites sont créés à partir d'un backoffice qui permet à la fois :
 
 - la création de modèle de données (édition de schéma de données dynamiques)
 - la manipulation des données (création, édition, suppression)
@@ -34,6 +37,8 @@ Ces sites sont créés à partir d'un backoffice qui permet à la fois
 
 En utilisant et en comprenant le code déjà implémenté, vous allez devoir compléter la solution afin de la rendre fonctionnelle et ainsi créer un micro générateur de site (Builder) associé à un visualisateur (Preview).
 Dans ce test nous ne nous intéressons pas à la partie Schéma de données dynamiques mais seulement à la création de pages dynamiques.
+
+**Imaginez pendant ce test que vous me soumettez une Pull Request qui partira en production. Vous aurez peu de "code" à écrire, mais il doit être de la meilleure qualité.**
 
 ## Les librairies utilisées dans ce test
 
@@ -83,7 +88,7 @@ Explication des différents types de données au sein de notre modèle de donné
 
 - Un composant (`component`)
   - a un `componentId` qui permettra de l'identifier et de render le bon composant dans la preview
-  - des options qui permettront de "nourrir" ce composant, c'est-à-dire afficher des données lors de la prévisualisation.
+  - des options qui permettront de "nourrir" ce composant, c'est-à-dire afficher des données lors de la prévisualisation. Un composant peut avoir de multiples options, de types différents !
 
 Un exemple de layout
 
@@ -178,7 +183,7 @@ const layout = [
 
 ## Setup
 
-1. Commencez par forker le répository sur un repository public. Pour le rendu du test, vous devez m'envoyer le lien à lucas.lbonnet.pro@gmail.com lorsque vous avez fini.
+1. Commencez par forker le répository sur un repository **privé**. Pour le rendu du test, vous devez m'envoyer une invitation Github / Gitlab (peu importe) mon pseudo est @LuCasstle. Envoyez moi un mail en cas de problème pour le partage.
 
 2. Installer les node_modules en lançant la commande `yarn`
 
@@ -192,7 +197,7 @@ const layout = [
 
 1. **Afficher le contenu des composants dans la preview**
    Comme vous pouvez le remarquer dans la preview, les composants qui devraient s'afficher sont manquants.
-   A partir des propriétés reçues par le composant `Component` dans la Preview et de la COMPONENT_MAP, récupérer le composant correspondant. Une fois le composant récupéré, transmettez via les propriétés ses options de manière à afficher les contenus qui ont été paramétrés dans le builder.
+   A partir des propriétés reçues par le composant `Component` dans la Preview et de la `COMPONENT_MAP`, récupérer le composant correspondant. Une fois le composant récupéré, transmettez via les propriétés ses options de manière à afficher les contenus qui ont été paramétrés dans le builder.
    Voilà le résultat auquel vous devez arriver ![Q1 result](/screenshots/q1-result.png?raw=true "Q1 result")
 
 2. **Implémentation de la fonctionnalité "reset" du layout**
@@ -211,16 +216,19 @@ const layout = [
 
 5. **Edition du contenu d'un composant**
 
-   Nous voulons maintenant pouvoir éditer le contenu des composants dans le builder.
+   Nous voulons maintenant pouvoir éditer les options des composants dans le builder. Gardez à l'esprit qu'un composant peut avoir un nombre arbitraire d'options, de types différents (string, number, etc).
 
    - Pour commencer, ajouter un state dans le composant de manière à pouvoir ouvrir la modal d'édition (le composant `Modal` reçoit les propriétés show qui doit être un boolean et onClose qui doit être une fonction).
-   - Maintenant que la modal s'ouvre, il nous faut ajouter un formulaire (voir https://couds.github.io/react-bulma-components/?path=/docs/form-basics--default, possible aussi de faire votre propre formulaire si vous ne comprenez pas comment utiliser la librairie) qui affiche une input pour chacune des options du composant (voir le type `ComponentType` pour trouver les options). Créer un state permettant d'éditer les options. Les options du composant ne doivent être écrite que lorsque l'utilisateur valide les changements dans la modal en cliquant sur le bouton "Enregistrer".
+   - Maintenant que la modal s'ouvre, il nous faut ajouter un formulaire (voir https://couds.github.io/react-bulma-components/?path=/docs/form-basics--default, vous pouvez aussi faire votre propre formulaire si vous ne comprenez pas comment utiliser la librairie) qui affiche un input **adapté au type de l'option** pour chacune des options du composant (voir le type `ComponentType` pour trouver les options). Le label affiché doit correspondre au label de l'option. Créer un state permettant d'éditer les options. Les options du composant ne doivent être écrites que lorsque l'utilisateur valide les changements dans la modal en cliquant sur le bouton "Enregistrer".
+   - Ajouter un "product" quelque part dans le layout. Editer son contenu. Vous devez obtenir quatre champs, trois de type `string`, un de type `number` (option price).
      Résultat attendu :
-     ![Q5 result](/screenshots/q5-result.png?raw=true "Q5 result")
+     ![Q5 result 1](/screenshots/q5-result-1.png?raw=true "Q5 result 1")
+     ![Q5 result 2](/screenshots/q5-result-2.png?raw=true "Q5 result 2")
+     ![Q5 result 3](/screenshots/q5-result-3.png?raw=true "Q5 result 3")
 
-6. (Optionnel, bonus) Sauriez-vous ajouté une fonctionnalité permettant à l'utilisateur de changer l'alignement du texte pour les composants textuels. Vous pouvez implémenter cette fonctionnalité comme bon vous semble. Vous pouvez aussi simplement y réfléchir, et nous en parlerons pendant le débrief !
+6. Sauriez-vous maintenant ajouter une fonctionnalité permettant à l'utilisateur de changer l'alignement du texte pour le composant "Titre". Vous pouvez implémenter cette fonctionnalité comme bon vous semble, mais l'objectif est évidemment de rester le plus possible dans l'esprit de la codebase. Vous pouvez aussi simplement y réfléchir, faire des schémas, noter vos idées et vous projeter dans l'implémentation que vous feriez, et nous en parlerons pendant le débrief.
 
-**Félicitations, vous avez terminé le test !**
+**Félicitations, vous avez terminé le test ! Pensez à bien tester votre code, je testerai que tout fonctionne bien**
 
 # Le debrief du test
 

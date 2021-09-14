@@ -30,6 +30,7 @@ export default function Builder({ layout, setLayout }: Props): React.Node {
       }),
       [setLayout]
   )
+
   const deleteRow = React.useCallback(
     (deletedRow: Row) =>
       setLayout((previousLayout) => {
@@ -53,11 +54,13 @@ export default function Builder({ layout, setLayout }: Props): React.Node {
         const rowIndex = previousLayout.findIndex(
           (row) => row.id === updatedRow.id
         );
+
         const newLayout = [
           ...previousLayout.slice(0, rowIndex),
           updatedRow,
           ...previousLayout.slice(rowIndex + 1),
         ];
+
         return newLayout;
       }),
     [setLayout]
@@ -69,6 +72,7 @@ export default function Builder({ layout, setLayout }: Props): React.Node {
     () => setLayout([]),
     [setLayout]
   )
+
   return (
     <DndProvider backend={HTML5Backend}>
       <Columns>

@@ -5,7 +5,7 @@ import type { ComponentOptionSchema, RenderedComponentProps } from "../types";
 
 export const OPTIONS: ComponentOptionSchema = {
   src: {
-    label: "src",
+    label: "Source de l'image (URL)",
     type: "string",
   },
 };
